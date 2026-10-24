@@ -1,0 +1,130 @@
+:root {
+  --night: #2a1a4a;
+  --night-2: #3b2766;
+  --butter: #ffe7a0;
+  --mint: #8ee3c8;
+  --sky: #aeb9ff;
+  --pink: #ff9cc2;
+  --paper: #fff8e8;
+  --display: "Fraunces", Georgia, "Times New Roman", serif;
+  --body: "Nunito", "Trebuchet MS", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--body);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--paper);
+  background: radial-gradient(circle at 20% 0%, var(--night-2), var(--night) 60%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--butter);
+  animation: twinkle 4s ease-in-out infinite;
+}
+@keyframes twinkle { 50% { opacity: .2; transform: scale(.6); } }
+
+.hero, main, footer { position: relative; z-index: 1; max-width: 46rem; margin: 0 auto; padding: 0 1.25rem; }
+
+.hero { padding-top: 3rem; padding-bottom: 2rem; }
+
+.bubble {
+  display: inline-block;
+  margin: 0 0 .75rem 5.5rem;
+  padding: .5rem 1rem;
+  background: var(--paper);
+  color: var(--night);
+  font-weight: 700;
+  border-radius: 1.2rem 1.2rem 1.2rem .3rem;
+  max-width: 20rem;
+  line-height: 1.4;
+}
+
+.blob {
+  display: block;
+  width: 9rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  animation: float 6s ease-in-out infinite;
+}
+.blob svg { display: block; width: 100%; height: auto; }
+.blob:active { transform: scale(.94); }
+@keyframes float { 50% { transform: translateY(-.6rem) rotate(-2deg); } }
+
+h1, h2 { font-family: var(--display); line-height: 1.15; margin: 0 0 .75rem; }
+h1 { font-size: clamp(2rem, 6vw, 3.2rem); font-weight: 800; margin-top: 1.25rem; }
+h2 { font-size: 1.9rem; font-weight: 600; }
+.lead { font-size: 1.25rem; max-width: 32rem; }
+
+nav { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.5rem; }
+nav a {
+  color: var(--paper);
+  text-decoration: none;
+  padding: .35rem 1rem;
+  border: 2px dashed var(--sky);
+  border-radius: 2rem;
+  font-weight: 700;
+}
+nav a:hover { background: var(--sky); color: var(--night); border-style: solid; }
+
+main { padding-bottom: 2rem; }
+
+.panel {
+  color: var(--night);
+  padding: 2rem 1.75rem;
+  margin: 2.5rem 0;
+}
+.panel p { margin: 0 0 1rem; max-width: 36rem; }
+.panel p:last-child { margin-bottom: 0; }
+.butter { background: var(--butter); border-radius: 60% 40% 55% 45% / 35% 45% 55% 65%; transform: rotate(-1deg); padding: 3rem 2.5rem; }
+.mint   { background: var(--mint);   border-radius: 2rem 4rem 2rem 4rem; transform: rotate(1deg); }
+.sky    { background: var(--sky);    border-radius: 45% 55% 40% 60% / 50% 40% 60% 50%; transform: rotate(-.8deg); padding: 3rem 2.5rem; }
+.pink   { background: var(--pink);   border-radius: 4rem 2rem 4rem 2rem; transform: rotate(.8deg); }
+
+.chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .6rem; }
+.chips li {
+  background: var(--paper);
+  padding: .3rem 1rem;
+  border-radius: 2rem;
+  font-weight: 700;
+}
+.chips li:nth-child(odd)  { transform: rotate(-2deg); }
+.chips li:nth-child(even) { transform: rotate(2deg); }
+.chips li:nth-child(3n)   { transform: rotate(.5deg) translateY(2px); }
+
+.links { display: flex; flex-wrap: wrap; gap: .75rem; }
+.links a {
+  background: var(--night);
+  color: var(--paper);
+  text-decoration: none;
+  padding: .5rem 1.25rem;
+  border-radius: 2rem;
+  font-weight: 700;
+}
+.links a:hover { background: var(--night-2); text-decoration: underline wavy; text-underline-offset: 4px; }
+
+a:focus-visible, .blob:focus-visible { outline: 3px solid var(--butter); outline-offset: 4px; }
+.panel a:focus-visible { outline-color: var(--night); }
+
+footer { padding-bottom: 2.5rem; font-size: .95rem; opacity: .8; }
+
+@media (max-width: 30rem) {
+  .bubble { margin-left: 1rem; }
+  .butter, .sky { padding: 2.5rem 1.75rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .star, .blob { animation: none; }
+}
